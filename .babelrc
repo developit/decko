@@ -1,0 +1,7 @@
+{
+  "modules": "umd",
+  "loose": "all",
+  "compact": true,
+  "comments": false,
+  "stage": 0
+}

@@ -1,0 +1,20 @@
+{
+  "name": "decko",
+  "version": "1.0.0",
+  "main": "decko.js",
+  "description": "A collection of the most useful property decorators.",
+  "scripts": {
+    "build": "babel src --source-root src -s -d .",
+    "test": "jshint src/**.js",
+    "prepublish": "npm run build",
+    "release": "npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/developit/decko.git"
+  },
+  "devDependencies": {
+    "babel": "^5.8.21",
+    "jshint": "^2.8.0"
+  }
+}
