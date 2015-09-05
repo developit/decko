@@ -1,11 +1,9 @@
-decko [![NPM Version](http://img.shields.io/npm/v/decko.svg?style=flat)](https://npmjs.com/package/decko)
-=====
+# decko [![NPM Version](http://img.shields.io/npm/v/decko.svg?style=flat)](https://npmjs.com/package/decko)
 
 > A collection of the most useful [decorators](https://github.com/wycats/javascript-decorators).
 
 
-Installation
-------------
+## Installation
 
 Available on [npm](https://npmjs.com/package/decko):
 
@@ -14,8 +12,7 @@ npm i -S decko
 ```
 
 
-Usage
------
+## Usage
 
 Each decorator method is available as a named import.
 
@@ -24,7 +21,7 @@ import { bind, memoize, debounce } from 'decko';
 ```
 
 
-# `@bind`
+### `@bind`
 
 ```js
 class Example {
@@ -41,7 +38,7 @@ assert.equal(e.foo(), e);
 
 
 
-# `@memoize`
+### `@memoize`
 
 > Cache values returned from the decorated function.
 > Uses the first argument as a cache key.
@@ -77,7 +74,7 @@ let three = e.expensive(2);
 
 
 
-# `@debounce`
+### `@debounce`
 
 > Throttle calls to the decorated function. To debounce means "call this at most once per N ms".
 > All outward function calls get collated into a single inward call, and only the latest (most recent) arguments as passed on to the debounced function.
@@ -99,3 +96,11 @@ let e = new Example();
 // this will only call foo() once:
 for (let i=1000; i--) e.foo();
 ```
+
+
+---
+
+License
+-------
+
+MIT
