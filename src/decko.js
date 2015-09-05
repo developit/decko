@@ -4,24 +4,24 @@ const HOP = Object.prototype.hasOwnProperty;
 
 let fns = {
 	/**  let cachedFn = memoize(originalFn); */
-	memoize(fn, opt=EMPTY) {
+	memoize(fn, opt=EMPTY, target=null) {
 		let cache = opt.cache || {};
-		return function (...a) {
+		return (...a) => {
 			let k = String(a[0]);
 			if (opt.caseSensitive===false) k = k.toLowerCase();
-			return HOP.call(cache,k) ? cache[k] : (cache[k] = fn.apply(this, a));
+			return HOP.call(cache,k) ? cache[k] : (cache[k] = fn.apply(target, a));
 		};
 	},
 
 	/** let throttled = debounce(10, console.log); */
-	debounce(fn, opts) {
+	debounce(fn, opts, target) {
 		if (typeof opts==='function') { let p = fn; fn = opts; opts = p; }
 		let delay = opts && opts.delay || opts || 0,
 			args, timer;
 		return (...a) => {
 			args = a;
 			if (!timer) timer = setTimeout( () => {
-				fn(...args);
+				fn.apply(target, args);
 				timer = args = null;
 			}, delay);
 		};
@@ -41,7 +41,7 @@ let fns = {
 			}
 		};
 	}
-}
+};
 
 
 let memoize = multiMethod(fns.memoize),
@@ -81,7 +81,7 @@ function multiMethod(inner, deco) {
 	return (...args) => {
 		let l = args.length;
 		return (l<2 ? deco : (l>2 ? d : inner))(...args);
-	}
+	};
 }
 
 /** Returns function supports the forms:
@@ -91,7 +91,7 @@ function multiMethod(inner, deco) {
 function decorator(fn) {
 	return opt => (
 		typeof opt==='function' ? fn(opt) : (target, key, desc) => {
-			desc.value = fn(desc.value, opt);
+			desc.value = fn(desc.value, opt, target, key, desc);
 		}
 	);
-};
+}
