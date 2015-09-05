@@ -5,7 +5,7 @@
   "description": "A collection of the most useful property decorators.",
   "scripts": {
     "build": "babel src --source-root src -s -d .",
-    "test": "jshint src/**.js",
+    "test": "jshint src/**.js && mocha --compilers js:babel/register tests/**/*.js",
     "prepublish": "npm run build",
     "release": "npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
   },
@@ -15,6 +15,8 @@
   },
   "devDependencies": {
     "babel": "^5.8.21",
-    "jshint": "^2.8.0"
+    "chai": "^3.2.0",
+    "jshint": "^2.8.0",
+    "mocha": "^2.3.0"
   }
 }
