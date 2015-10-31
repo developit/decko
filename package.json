@@ -4,7 +4,7 @@
   "main": "decko.js",
   "description": "A collection of the most useful property decorators.",
   "scripts": {
-    "build": "babel src --source-root src -s -d .",
+    "build": "babel -f $npm_package_main -s -o $npm_package_main < src/${npm_package_main}",
     "test": "jshint src/**.js && mocha --compilers js:babel/register tests/**/*.js",
     "prepublish": "npm run build",
     "release": "npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
