@@ -1,6 +1,6 @@
 {
   "name": "decko",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "decko.js",
   "description": "A collection of the most useful property decorators.",
   "scripts": {
