@@ -6,10 +6,10 @@ let fns = {
 	/**  let cachedFn = memoize(originalFn); */
 	memoize(fn, opt=EMPTY, target=null) {
 		let cache = opt.cache || {};
-		return (...a) => {
+		return function(...a) {
 			let k = String(a[0]);
 			if (opt.caseSensitive===false) k = k.toLowerCase();
-			return HOP.call(cache,k) ? cache[k] : (cache[k] = fn.apply(target, a));
+			return HOP.call(cache,k) ? cache[k] : (cache[k] = fn.apply(this, a));
 		};
 	},
 
