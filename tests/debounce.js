@@ -13,6 +13,7 @@ describe('debounce()', () => {
 			foo(...args) {
 				c.calls++;
 				c.args = args;
+				c.context = this;
 			}
 		};
 
@@ -24,6 +25,7 @@ describe('debounce()', () => {
 		setTimeout( () => {
 			expect(c).to.have.property('calls', 1);
 			expect(c.args).to.deep.equal([3]);
+			expect(c.context).to.equal(c);
 
 			next();
 		}, 20);
