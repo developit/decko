@@ -4,7 +4,7 @@ const HOP = Object.prototype.hasOwnProperty;
 
 let fns = {
 	/**  let cachedFn = memoize(originalFn); */
-	memoize(fn, opt=EMPTY, target=null) {
+	memoize(fn, opt=EMPTY) {
 		let cache = opt.cache || {};
 		return function(...a) {
 			let k = String(a[0]);
@@ -14,15 +14,16 @@ let fns = {
 	},
 
 	/** let throttled = debounce(10, console.log); */
-	debounce(fn, opts, target) {
+	debounce(fn, opts) {
 		if (typeof opts==='function') { let p = fn; fn = opts; opts = p; }
 		let delay = opts && opts.delay || opts || 0,
-			args, timer;
-		return (...a) => {
+			args, context, timer;
+		return function(...a) {
 			args = a;
+			context = this;
 			if (!timer) timer = setTimeout( () => {
-				fn.apply(target, args);
-				timer = args = null;
+				fn.apply(context, args);
+				args = context = timer = null;
 			}, delay);
 		};
 	},
