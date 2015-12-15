@@ -1,7 +1,9 @@
 import { bind } from '..';
 import { expect } from 'chai';
 
-describe('bind()', λ => {
+/*global describe,it*/
+
+describe('bind()', () => {
 	it('should bind when used as a simple decorator', next => {
 		let c = {
 			@bind

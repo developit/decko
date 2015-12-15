@@ -1,7 +1,9 @@
 import { memoize } from '..';
 import { expect } from 'chai';
 
-describe('memoize()', λ => {
+/*global describe,it*/
+
+describe('memoize()', () => {
 	it('should memoize when used as a simple decorator', next => {
 		let c = {
 			@memoize

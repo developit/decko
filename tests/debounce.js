@@ -1,7 +1,9 @@
 import { debounce } from '..';
 import { expect } from 'chai';
 
-describe('debounce()', λ => {
+/*global describe,it*/
+
+describe('debounce()', () => {
 	it('should debounce when used as a simple decorator', next => {
 		let c = {
 			calls: 0,
