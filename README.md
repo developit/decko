@@ -1,6 +1,8 @@
 # decko [![NPM Version](http://img.shields.io/npm/v/decko.svg?style=flat)](https://npmjs.com/package/decko) [![Build Status](https://travis-ci.org/developit/decko.svg?branch=master)](https://travis-ci.org/developit/decko)
 
 > A collection of the most useful [decorators](https://github.com/wycats/javascript-decorators).
+>
+> Works by default with Babel 5.x. To use with Babel 6+, install [transform-decorators-legacy](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy).
 
 
 ## Installation
