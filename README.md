@@ -1,4 +1,4 @@
-# decko [![NPM Version](http://img.shields.io/npm/v/decko.svg?style=flat)](https://npmjs.com/package/decko) [![Build Status](https://travis-ci.org/developit/decko.svg?branch=master)](https://travis-ci.org/developit/decko)
+# decko [![NPM Version](https://img.shields.io/npm/v/decko.svg?style=flat)](https://npmjs.com/package/decko) [![Build Status](https://travis-ci.org/developit/decko.svg?branch=master)](https://travis-ci.org/developit/decko)
 
 > A collection of the most useful [decorators](https://github.com/wycats/javascript-decorators).
 >
