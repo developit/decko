@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Decko : A collection of the 3 most useful ES7 decorators: bind, memoize and debounce.">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Decko</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/developit/decko">View on GitHub</a>
+
+          <h1 id="project_title">Decko</h1>
+          <h2 id="project_tagline">A collection of the 3 most useful ES7 decorators: bind, memoize and debounce.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/developit/decko/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/developit/decko/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="decko--" class="anchor" href="#decko--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>decko <a href="https://npmjs.com/package/decko"><img src="http://img.shields.io/npm/v/decko.svg?style=flat" alt="NPM Version"></a> <a href="https://travis-ci.org/developit/decko"><img src="https://travis-ci.org/developit/decko.svg?branch=master" alt="Build Status"></a>
+</h1>
+
+<blockquote>
+<p>A collection of the most useful <a href="https://github.com/wycats/javascript-decorators">decorators</a>.</p>
+
+<p>Decorators help simplify code by replacing the noise of common patterns with declarative annotations.</p>
+
+<p>Conversely, decorators can also be overused and create obscurity. Decko establishes 3 standard decorators that are immediately recognizable, so you can avoid creating decorators in your own codebase.</p>
+
+<p>Works by default with Babel 5.x. To use with Babel 6+, install <a href="https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy">transform-decorators-legacy</a>.</p>
+</blockquote>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Available on <a href="https://npmjs.com/package/decko">npm</a>:</p>
+
+<div class="highlight highlight-source-shell"><pre>npm i -S decko</pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Each decorator method is available as a named import.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> { <span class="pl-smi">bind</span>, <span class="pl-smi">memoize</span>, <span class="pl-smi">debounce</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>decko<span class="pl-pds">'</span></span>;</pre></div>
+
+<h3>
+<a id="bind" class="anchor" href="#bind" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>@bind</code>
+</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-en">Example</span> {
+    @bind
+    <span class="pl-en">foo</span>() {
+        <span class="pl-c">// the value of `this` is always the object from which foo() was referenced.</span>
+        <span class="pl-k">return</span> <span class="pl-v">this</span>;
+    }
+}
+
+<span class="pl-k">let</span> e <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Example</span>();
+<span class="pl-smi">assert</span>.<span class="pl-en">equal</span>(<span class="pl-smi">e</span>.<span class="pl-en">foo</span>(), e);</pre></div>
+
+<h3>
+<a id="memoize" class="anchor" href="#memoize" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>@memoize</code>
+</h3>
+
+<blockquote>
+<p>Cache values returned from the decorated function.
+Uses the first argument as a cache key.
+<em>Cache keys are always converted to strings.</em></p>
+
+<h5>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Options:</h5>
+
+<p><code>caseSensitive: false</code> - <em>Makes cache keys case-insensitive</em></p>
+
+<p><code>cache: {}</code> - <em>Presupply cache storage, for seeding or sharing entries</em></p>
+</blockquote>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-en">Example</span> {
+    @memoize
+    <span class="pl-en">expensive</span>(<span class="pl-smi">key</span>) {
+        <span class="pl-k">let</span> start <span class="pl-k">=</span> <span class="pl-c1">Date</span>.<span class="pl-en">now</span>();
+        <span class="pl-k">while</span> (<span class="pl-c1">Date</span>.<span class="pl-en">now</span>()<span class="pl-k">-</span>start <span class="pl-k">&lt;</span> <span class="pl-c1">500</span>) key<span class="pl-k">++</span>;
+        <span class="pl-k">return</span> key;
+    }
+}
+
+<span class="pl-k">let</span> e <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Example</span>();
+
+<span class="pl-c">// this takes 500ms</span>
+<span class="pl-k">let</span> one <span class="pl-k">=</span> <span class="pl-smi">e</span>.<span class="pl-en">expensive</span>(<span class="pl-c1">1</span>);
+
+<span class="pl-c">// this takes 0ms</span>
+<span class="pl-k">let</span> two <span class="pl-k">=</span> <span class="pl-smi">e</span>.<span class="pl-en">expensive</span>(<span class="pl-c1">1</span>);
+
+<span class="pl-c">// this takes 500ms</span>
+<span class="pl-k">let</span> three <span class="pl-k">=</span> <span class="pl-smi">e</span>.<span class="pl-en">expensive</span>(<span class="pl-c1">2</span>);</pre></div>
+
+<h3>
+<a id="debounce" class="anchor" href="#debounce" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>@debounce</code>
+</h3>
+
+<blockquote>
+<p>Throttle calls to the decorated function. To debounce means "call this at most once per N ms".
+All outward function calls get collated into a single inward call, and only the latest (most recent) arguments as passed on to the debounced function.</p>
+
+<h5>
+<a id="options-1" class="anchor" href="#options-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Options:</h5>
+
+<p><code>delay: 0</code> - <em>The number of milliseconds to buffer calls for.</em></p>
+</blockquote>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-en">Example</span> {
+    @debounce
+    <span class="pl-en">foo</span>() {
+        <span class="pl-k">return</span> <span class="pl-v">this</span>;
+    }
+}
+
+<span class="pl-k">let</span> e <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Example</span>();
+
+<span class="pl-c">// this will only call foo() once:</span>
+<span class="pl-k">for</span> (<span class="pl-k">let</span> i<span class="pl-k">=</span><span class="pl-c1">1000</span>; i<span class="pl-k">--</span>) <span class="pl-smi">e</span>.<span class="pl-en">foo</span>();</pre></div>
+
+<hr>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>MIT</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Decko maintained by <a href="https://github.com/developit">developit</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-6031694-18");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
