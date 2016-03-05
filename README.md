@@ -1,8 +1,16 @@
 # decko [![NPM Version](https://img.shields.io/npm/v/decko.svg?style=flat)](https://npmjs.com/package/decko) [![Build Status](https://travis-ci.org/developit/decko.svg?branch=master)](https://travis-ci.org/developit/decko)
 
-> A collection of the most useful [decorators](https://github.com/wycats/javascript-decorators).
->
-> Works by default with Babel 5.x. To use with Babel 6+, install [transform-decorators-legacy](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy).
+A concise implementation of the three most useful [decorators](https://github.com/wycats/javascript-decorators):
+
+- `@bind`: make the value of `this` constant within a method
+- `@debounce`: throttle calls to a method
+- `@memoize`: cache return values based on arguments
+
+Decorators help simplify code by replacing the noise of common patterns with declarative annotations.
+Conversely, decorators can also be overused and create obscurity.
+Decko establishes 3 standard decorators that are immediately recognizable, so you can avoid creating decorators in your own codebase.
+
+> _**Note:** Decorators work by default with Babel 5.x. For Babel 6+, install [transform-decorators-legacy](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy)._
 
 
 ## Installation
