@@ -43,7 +43,7 @@ class Example {
 }
 
 let e = new Example();
-assert.equal(e.foo(), e);
+assert.equal(e.foo.call(null), e);
 ```
 
 
