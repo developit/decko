@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "module": "es2015",
+    "target": "es2016",
+    "lib": [
+      "dom",
+      "es2016"
+    ],
+    "baseUrl": "./",
+    "noImplicitAny": true,
+    "experimentalDecorators": true,
+    "sourceMap": false,
+    "moduleResolution": "node",
+    "strictNullChecks": true,
+    "declaration": true,
+    "noEmit": true,
+    "pretty": true,
+    "outDir": "ts-output"
+  },
+  "include": [
+    "src/decko.d.ts",
+    "tests/index.ts"
+  ]
+}
