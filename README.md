@@ -10,7 +10,9 @@ Decorators help simplify code by replacing the noise of common patterns with dec
 Conversely, decorators can also be overused and create obscurity.
 Decko establishes 3 standard decorators that are immediately recognizable, so you can avoid creating decorators in your own codebase.
 
-> _**Note:** Decorators work by default with Babel 5.x. For Babel 6+, install [transform-decorators-legacy](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy)._
+> 💡 **Tip:** decko is particularly well-suited to [**Preact Classful Components**](https://github.com/developit/preact).
+>
+> 💫 **Note:** For Babel 6+, be sure to install [babel-plugin-transform-decorators-legacy](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy).
 
 
 ## Installation
