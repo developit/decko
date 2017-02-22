@@ -12,7 +12,9 @@ Decko establishes 3 standard decorators that are immediately recognizable, so yo
 
 > 💡 **Tip:** decko is particularly well-suited to [**Preact Classful Components**](https://github.com/developit/preact).
 >
-> 💫 **Note:** For Babel 6+, be sure to install [babel-plugin-transform-decorators-legacy](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy).
+> 💫 **Note:**
+> - For Babel 6+, be sure to install [babel-plugin-transform-decorators-legacy](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy).
+> - For Typescript, be sure to enable `{"experimentalDecorators": true}` in your tsconfig.json.
 
 
 ## Installation
