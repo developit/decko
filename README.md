@@ -1,5 +1,7 @@
 # decko [![NPM Version](https://img.shields.io/npm/v/decko.svg?style=flat)](https://npmjs.com/package/decko) [![Build Status](https://travis-ci.org/developit/decko.svg?branch=master)](https://travis-ci.org/developit/decko)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/developit/decko.svg)](https://greenkeeper.io/)
+
 A concise implementation of the three most useful [decorators](https://github.com/wycats/javascript-decorators):
 
 - `@bind`: make the value of `this` constant within a method
