@@ -33,11 +33,13 @@ let fns = {
 			configurable: true,
 			get() {
 				let value = fn.bind(this);
-				Object.defineProperty(this, key, {
-					value,
-					configurable: true,
-					writable: true
-				});
+				if (target.constructor === this.constructor) {
+					Object.defineProperty(this, key, {
+						value,
+						configurable: true,
+						writable: true
+					});
+				}
 				return value;
 			}
 		};

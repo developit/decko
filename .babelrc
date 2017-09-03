@@ -1,6 +1,6 @@
 {
   "modules": "umd",
-  "loose": "all",
+  "loose": false,
   "compact": true,
   "comments": false,
   "stage": 0
