@@ -16,6 +16,9 @@ Decko establishes 3 standard decorators that are immediately recognizable, so yo
 > - For Babel 6+, be sure to install [babel-plugin-transform-decorators-legacy](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy).
 > - For Typescript, be sure to enable `{"experimentalDecorators": true}` in your tsconfig.json.
 
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/WbARjbDRQz5y3N6VBEMPU4LW/developit/decko'>
+  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/WbARjbDRQz5y3N6VBEMPU4LW/developit/decko.svg' />
+</a>
 
 ## Installation
 
