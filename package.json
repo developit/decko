@@ -1,6 +1,6 @@
 {
   "name": "decko",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "dist/decko.js",
   "types": "dist/decko.d.ts",
   "description": "A collection of the most useful property decorators.",
